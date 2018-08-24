@@ -1,10 +1,14 @@
 package com.diffblue.javatest;
 
+import java.util.Objects;
+
 public class Main {
   /**
    * Takes two strings, converts them to integers and divides them.
    */
   void divide(String string1, String string2) {
+    Objects.requireNonNull(string2);
+    Objects.requireNonNull(string1);
     int number1 = Integer.parseInt(string1);
     int number2 = Integer.parseInt(string2);
     if (number2 != 0) {
