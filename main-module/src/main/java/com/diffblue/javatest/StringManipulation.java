@@ -2,32 +2,33 @@ package com.diffblue.javatest;
 
 import java.io.PrintStream;
 import java.util.Locale;
+import java.util.Optional;
 
 public class StringManipulation {
 
   /**
    * Checks if a class's name matches the this class.
    */
-  public static Boolean checkClassName(Class testClass) {
+  public static Optional<Boolean> checkClassName(Class testClass) {
     StringManipulation stringManipulation = new StringManipulation();
     Class expectedClass = stringManipulation.getClass();
     if (testClass.getName().equals(expectedClass.getName())) {
-      return true;
+      return Optional.ofNullable(true);
     }
-    return false;
+    return Optional.ofNullable(false);
   }
 
   /**
    * Checks if a class's name matches the this class,
    * then returns the simple name of the class, otherwise returns "".
    */
-  public static String classGetSimpleName(Class testClass) {
+  public static Optional<String> classGetSimpleName(Class testClass) {
     StringManipulation stringManipulation = new StringManipulation();
     Class expectedClass = stringManipulation.getClass();
     if (testClass.getName().equals(expectedClass.getName())) {
-      return testClass.getSimpleName();
+      return Optional.ofNullable(testClass.getSimpleName());
     }
-    return "";
+    return Optional.ofNullable("");
   }
 
   /**
@@ -82,42 +83,42 @@ public class StringManipulation {
   /**
    * Returns a new string with the input string twice, separated by "=".
    */
-  public static String duplicateString(String string) {
+  public static Optional<String> duplicateString(String string) {
     StringBuilder builder = new StringBuilder();
     builder.append(string);
     builder.append("=");
     builder.append(string);
-    return builder.toString();
+    return Optional.ofNullable(builder.toString());
   }
 
   /**
    * Returns a new string buffer with the input string twice, separated by "=".
    */
-  public static StringBuffer duplicateStringToStringBuffer(String string) {
+  public static Optional<StringBuffer> duplicateStringToStringBuffer(String string) {
     StringBuffer buffer = new StringBuffer();
     buffer.append(string);
     buffer.append("=");
     buffer.append(string);
-    return buffer;
+    return Optional.ofNullable(buffer);
   }
 
   /**
    * Returns a new string builder with the input string twice, separated by "=".
    */
-  public static StringBuilder duplicateStringToStringBuilder(String string) {
+  public static Optional<StringBuilder> duplicateStringToStringBuilder(String string) {
     StringBuilder builder = new StringBuilder();
     builder.append(string);
     builder.append("=");
     builder.append(string);
-    return builder;
+    return Optional.ofNullable(builder);
   }
 
   /**
    * Appends an question mark to the end of a string builder string.
    */
-  public static StringBuilder convertToQuestion(StringBuilder builder) {
+  public static Optional<StringBuilder> convertToQuestion(StringBuilder builder) {
     builder.append("?");
-    return builder;
+    return Optional.ofNullable(builder);
   }
 
   /**
@@ -238,17 +239,17 @@ public class StringManipulation {
   /**
    * Returns a greeting message formatted with the US locale
    */
-  public static String stringFormatLocaleExample(String name) {
+  public static Optional<String> stringFormatLocaleExample(String name) {
     assert (name.length() > 0);
-    return String.format(Locale.US, "Hello %s !", name);
+    return Optional.ofNullable(String.format(Locale.US, "Hello %s !", name));
   }
 
   /**
    * Checks if a string's hash code matches the hash code of "test".
    */
-  public static Boolean checkHashCode(String string) {
+  public static Optional<Boolean> checkHashCode(String string) {
     String comparison = "test";
-    return string.hashCode() == comparison.hashCode();
+    return Optional.ofNullable(string.hashCode() == comparison.hashCode());
   }
 
   /**
@@ -286,31 +287,31 @@ public class StringManipulation {
   /**
    * Checks if a string starts with "substring".
    */
-  public static Boolean checkStartsWithSubstring(String string) {
+  public static Optional<Boolean> checkStartsWithSubstring(String string) {
     if (string.startsWith("substring")) {
-      return true;
+      return Optional.ofNullable(true);
     }
-    return false;
+    return Optional.ofNullable(false);
   }
 
   /**
    * Returns a substring of length 10 if a string is greater than length 10,
    * otherwise returns the original string.
    */
-  public static String truncateString(String string) {
+  public static Optional<String> truncateString(String string) {
     if (string.length() > 10) {
-      return string.substring(1, 11);
+      return Optional.ofNullable(string.substring(1, 11));
     } else {
-      return string;
+      return Optional.ofNullable(string);
     }
   }
 
   /**
    * Converts a string to a char array, expecting at least 2 characters.
    */
-  public static char[] stringToCharArray(String string) {
+  public static Optional<char[]> stringToCharArray(String string) {
     assert (string.length() >= 2);
-    return string.toCharArray();
+    return Optional.ofNullable(string.toCharArray());
   }
 
   /**
@@ -336,12 +337,12 @@ public class StringManipulation {
   /**
    * Trims a string if there are exactly 3 whitespace characters.
    */
-  public static String trimString(String original) {
+  public static Optional<String> trimString(String original) {
     String trimmed = original.trim();
     if (trimmed.length() == original.length() - 3) {
-      return trimmed;
+      return Optional.ofNullable(trimmed);
     } else {
-      return original;
+      return Optional.ofNullable(original);
     }
   }
 
